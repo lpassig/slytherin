@@ -4,12 +4,7 @@ output "vnet_name" {
 }
 
 output "subnet_name" {
-  value = azurerm_linux_virtual_machine.myterraformvm.public_ip_address
-  sensitive = false
-}
-
-output "nsg_name" {
-  value = azurerm_linux_virtual_machine.myterraformvm.public_ip_address
+  value = azurerm_virtual_network.myterraformnetwork.name
   sensitive = false
 }
 
