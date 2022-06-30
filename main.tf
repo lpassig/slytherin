@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "rg" {
   name      = random_pet.rg-name.id
   location  = var.resource_group_location
 
-  tags {
+  tags = {
     owner               = "${var.NAME}"
     project             = "project-${var.NAME}"
     terraform           = "true"
@@ -21,7 +21,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
-  tags {
+  tags = {
     owner               = "${var.NAME}"
     project             = "project-${var.NAME}"
     terraform           = "true"
@@ -31,22 +31,16 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 
 # Create subnet
 resource "azurerm_subnet" "myterraformsubnet" {
-  name                 = "mySubnet"
+  name                 = "project-${var.NAME}"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
   address_prefixes     = ["10.0.1.0/24"]
 
-  tags {
-    owner               = "${var.NAME}"
-    project             = "project-${var.NAME}"
-    terraform           = "true"
-    environment         = "dev"
-  }
 }
 
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "myterraformnsg" {
-  name                = "myNetworkSecurityGroup"
+  name                = "NSG-${var.NAME}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
