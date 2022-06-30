@@ -11,6 +11,7 @@ terraform {
 }
 
 provider "azurerm" {
-  location = "${var.resource_group_location}"
- 
+  subscription_id = "${var.subscription_id}"
+  tenant_id       = "${var.tenant_id}"
+  features {}
 }
