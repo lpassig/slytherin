@@ -11,13 +11,6 @@ terraform {
 }
 
 provider "azurerm" {
-  region = "${var.resource_group_location}"
-  default_tags {
-    tags = {
-      owner               = "${var.NAME}"
-      project             = "project-harry"
-      terraform           = "true"
-      environment         = "dev"
-    }
-  }    
+  location = "${var.resource_group_location}"
+ 
 }
