@@ -3,7 +3,7 @@ terraform {
   cloud {
     organization = "propassig"
     workspaces {
-      name = "Slytherin_Azure_LandingZone"
+      name = "Azure_Slytherin_LandingZone"
     }
   }
   required_providers {
