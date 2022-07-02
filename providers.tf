@@ -1,7 +1,11 @@
 terraform {
-
   required_version = ">=0.12"
-
+  cloud {
+    organization = "propassig"
+    workspaces {
+      name = "Slytherin_Azure_LandingZone"
+    }
+  }
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
